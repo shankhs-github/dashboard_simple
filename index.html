@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- boostrap, fontawesome and CSS file link -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/836aa845a8.js" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='style.css'>
+    <title>Shankha Tempelate</title>
+  </head>
+  <body>
+    <div class = 'container-fluid'>
+        
+        <div class = 'row' id = 'main_body'>
+
+<!-- the left navigation  -->
+
+            <div class = 'col-2 p-2 bg-dark text-light shadow-lg' id = 'left_navigation'>
+                <br>
+                <a href="index.html" class= 'ml-4 mt-4 pl-4'><i class="fab fa-free-code-camp fa-5x ml-2 text-danger"></i></a>  
+                <br>
+                <br>
+                
+                <p class='text-muted mt-2'><small>DASHBOARD 2.0</small></p>
+
+<!-- key word search  -->
+
+                <div class="input-group my-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-dark" id="basic-addon1"><i class="fas fa-search text-light"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Keyword Search" id = 'search' autofocus>
+                </div>
+
+                <br>
+
+<!-- side bar navigation  -->
+
+                <div id = 'menu_nav'>
+                    <ul>
+                        <li href="index.html">
+                            <i class="fas fa-columns"></i>
+                            <span class="badge badge-warning float-right mt-2" id='badge'>4</span>
+                            <span> Dashboards </span>
+                            <br>
+                            <ul class = 'my-2'>
+                                <li>
+                                    <a href='/' onclick="all_tickets()">All Tickets</a>
+                                </li>
+                                <li>
+                                    <a href='/' onclick="open_tickets()">Open Tickets</a>
+                                </li>
+                                <li>
+                                    <a href='/' onclick="urgent_tickets()">Urgent Tickets</a>
+                                </li>
+                                <li>
+                                    <a href='/' onclick="closed_tickets()">Closed Tickets</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul>
+                        <li>
+                            <i class="fas fa-chart-line"></i>
+                            <span> Reports </span>
+                            <br>
+                            <ul class = 'my-2'>
+                                <li>
+                                    <a href='/' onclick="report()">Productivity Report</a>
+                                </li>
+                                <li>
+                                    <a href='/' onclick="report()">Open Ticket Ageing Report Report</a>
+                                </li>
+                                <li>
+                                    <a href='/' onclick="report()">Urgent Ticket-Resolution Report</a>
+                                </li>
+                                <li>
+                                    <a href='/' onclick="report()">Closure Report</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <i class="fas fa-bomb"></i>
+                            <span> miscellaneous </span>
+                            <br>
+                            <ul class = 'my-2'>
+                                <li>
+                                    <a href='/' onclick="fun_ball()">Lets have FUN</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+<!-- the main data display area -->
+
+            <div class = 'col-10 p-2 bg-light shadow-lg float-left' id = 'work_area'>
+
+                <h1 class = 'text-center text-muted'>Shankhs Ticketing Dashboard</h1>
+
+<!-- the top navigation -->
+
+                <div>
+                    <button type="button" id='button_issue' onclick= 'complaint_no()' class="btn btn-primary mt-4" data-toggle="modal" data-target="#issue_reg">Add New Issue</button>
+                    
+                    <select id = 'sort_by' class="browser-default custom-select mb-4 col-3 offset-6 mt-5">
+                        <option value="" disabled>Choose Sorting</option>
+                        <option value="name" selected>Name</option>
+                        <option value="department">Department</option>
+                        <option value="date">Complaint Date</option>
+                        <option value="complaint_no">Complaint ID</option>
+                        <option value="issue">Complaint Issue</option>
+                        <option value="status">Status</option>
+                    </select>
+                    
+                    <button type="button" id='sort' class="btn btn-primary float-right mt-5" onclick="sort()" >Sort LIST</button>
+                </div>
+
+<!-- the issue add form -->
+
+                <div class="modal fade col-6 offset-3 bg-light shadow-lg rounded" id="issue_reg" tabindex="-1" aria-hidden="true">
+                    
+                    <form class="border p-5">
+                        <p class="h3 mb-4 text-center">New Issue Registration</p>
+                        <p id = 'complaint_no' class= 'text-danger font-weight-bold'></p>
+                        <input type="text" id="name" class="form-control mb-4" placeholder="Name">
+                        <div class = 'form-inline mx-3'>
+                            <p>Complaint Date</p>
+                            <input type="date" id="date" class="form-control mx-4 mb-3">
+                            <p class = 'float-left text-muted mx-4'><small>To be resolved by : 10 days</small></p>
+                        </div>
+                        <label class = 'ml-2'>Choose a Department</label>
+                        <select id = 'department' class="browser-default custom-select mb-4">
+                            <option value="" disabled>Choose option</option>
+                            <option value="New Student Related Issue">New Student Related Issue</option>
+                            <option value="Current Student Issue" selected>Current Student Issue</option>
+                            <option value="Complaint Against Teacher">Complaint Against Teacher</option>
+                            <option value="Complaint Against Student">Complaint Against Student</option>
+                            <option value="Issues Realted to Examination">Issues Realted to Examination</option>
+                            <option value="Documentation Issue">Documentation Issue</option>
+                            <option value="Fees Issue">Fees Issue</option>
+                            <option value="Refund Issue">Refund Issue</option>
+                            <option value="Status Update">Status Update</option>
+                        </select>
+        
+                        <div class="form-group">
+                            <textarea class="form-control rounded-0" id="issue" rows="3" placeholder="Complaint ISSUE Details"></textarea>
+                        </div>
+                        <div >
+                            <button id = 'add' class="btn btn-primary " type="submit" onclick="add_issue()">Register Issue</button>
+                            <button id = 'cancel' class="btn btn-warning " type="submit" >Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+<!-- start of the table display -->
+
+                <div>
+                    <table class="table table-striped mt-4">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Complaint ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Complaint Date</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Complaint ISSUE Details</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody id = 'table'>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Masai/2020-21/1</td>
+                            <td>Mark</td>
+                            <td>Date</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Open</td>
+                            <td><button class = 'btn btn-outline-primary btn-sm'>Edit</td>
+                        </tr>
+                    </table>
+                </div>
+
+<!-- pagination starts -->
+
+                <div >
+                    <nav>
+                      <ul class="pagination justify-content-center rounded" id = 'pagination'>
+                        <li class="page-item page-link">Previous</li>
+                        <li class="page-item page-link colo">1</li>
+                        <li class="page-item page-link">2</li>
+                        <li class="page-item page-link">3</li>
+                        <li class="page-item page-link">Next</li>
+                      </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- canvas - ball bouncing location -->
+
+<canvas id="canvas" width="1368" height="798"></canvas>
+    
+<!-- bootstrap JS and the main JS file -->
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='script.js'></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+#left_navigation {
+  min-height: 798px;
+  margin: 0;
+}
+
+#work_area {
+  min-height: 798px;
+}
+ul {
+  list-style-type: none;
+  margin-left: -10px;
+}
+li {
+  list-style-type: none;
+}
+
+a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #8d9091;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#issue_reg {
+  margin-top: 50px;
+  max-height: 600px;
+}
+
+.colo {
+  background-color: #007bff;
+  color: whitesmoke;
+}
+
+#menu_nav {
+
+    margin-left: -35px;
+
+}
+
+#pagination:hover {
+
+    cursor: pointer;
+}
+
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
